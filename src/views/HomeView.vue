@@ -1,8 +1,5 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <main>
-    body
-  </main>
+  <div>поиск видева</div>
 </template>

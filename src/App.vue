@@ -1,9 +1,9 @@
 <script setup lang="ts">
-// console.log(import.meta.env.VITE_API_KEY)
+import { AppHeader } from './widgets/AppHeader'
 </script>
 
 <template>
-  <header></header>
+  <AppHeader />
 
   <main>
     <RouterView />
