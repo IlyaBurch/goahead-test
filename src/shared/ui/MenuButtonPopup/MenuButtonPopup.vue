@@ -14,7 +14,7 @@ const toggle = (event: Event) => {
 <template>
   <Button
     type="button"
-    icon="pi pi-ellipsis-v"
+    icon="pi pi-bars"
     @click="toggle"
     aria-haspopup="true"
     aria-controls="overlay_menu"
