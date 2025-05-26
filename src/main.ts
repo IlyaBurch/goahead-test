@@ -1,13 +1,14 @@
-import './assets/main.css'
+import './assets/main.css';
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import PrimeVue from 'primevue/config'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import PrimeVue from 'primevue/config';
 import { definePreset } from '@primeuix/themes';
-import Aura from '@primeuix/themes/aura'
+import Aura from '@primeuix/themes/Aura';
+import ToastService from 'primevue/toastservice';
 
-import App from './App.vue'
-import router from './router'
+import App from './App.vue';
+import router from './router';
 
 const app = createApp(App)
 
@@ -31,8 +32,8 @@ const MyPreset = definePreset(Aura, {
 });
 
 
-app.use(createPinia())
-app.use(router)
+app.use(createPinia());
+app.use(router);
 app.use(PrimeVue, {
   theme: {
     preset: MyPreset,
@@ -42,5 +43,6 @@ app.use(PrimeVue, {
   },
   ripple: true
 });
+app.use(ToastService);
 
-app.mount('#app')
+app.mount('#app');

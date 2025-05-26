@@ -1,30 +1,30 @@
 <script lang="ts" setup>
+import { FavoritesButton } from '@/features/FavoritesButton'
+import type { Video } from '@/shared/types/videos'
 import Card from 'primevue/card'
 
 import Image from 'primevue/image'
 
-// const { thumbnail, channel, name, views } = defineProps<{
-//   thumbnail: string
-//   channel: string
-//   name: string
-//   views: string
-// }>()
-
-const _name = 'Never gonna give you up'
-const _channel = 'Rick Roll'
-const _views = '3.5M'
+const { video } = defineProps<{
+  video: Video
+}>()
 </script>
 
 <template>
   <Card>
     <template #header>
-      <Image src="src/assets/maxresdefault.jpg" :alt="_name" />
+      <Image :src="video.snippet.thumbnails.high.url" :alt="video.snippet.title" />
     </template>
     <template #title>
-      <span class="title">{{ _name }}</span>
+      <span class="title">{{ video.snippet.title }}</span>
     </template>
     <template #subtitle>
-      <span class="subtitle">{{ `${_channel} • ${_views} просмотров` }}</span>
+      <span class="subtitle">{{
+        `${video.snippet.channelTitle} • ${video.snippet.liveBroadcastContent} просмотров`
+      }}</span>
+    </template>
+    <template #footer>
+      <FavoritesButton :video />
     </template>
   </Card>
 </template>
