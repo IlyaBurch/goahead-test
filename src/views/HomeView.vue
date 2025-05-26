@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { VideoList } from '@/widgets/VideoList'
+</script>
 
 <template>
-  <div>поиск видева</div>
+  <VideoList />
 </template>
