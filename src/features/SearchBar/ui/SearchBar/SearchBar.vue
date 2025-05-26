@@ -14,12 +14,13 @@ const goToSearch = () => {
 
 const input: ModelRef<string | undefined> = defineModel('input')
 </script>
+
 <template>
-  <div class="flex w-full">
+  <div class="flex w-full" @keyup.enter="goToSearch">
     <div class="w-full">
       <InputText fluid v-model="input" placeholder="Поиск видео" />
     </div>
-    <Button icon="pi pi-search" iconPos="top" @click="goToSearch" />
+    <Button icon="pi pi-search" iconPos="top" @click="goToSearch" title="Поиск" />
   </div>
 </template>
 

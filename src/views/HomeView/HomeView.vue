@@ -12,7 +12,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <h2 class="p-2 text-3xl">Главная страница</h2>
+  <h2 class="p-2 text-2xl">Главная страница</h2>
   <VideoList :items="store.items" :loading="store.loading" />
   <div class="flex justify-center p-4">
     <Button @click="store.loadMore" label="Загрузить еще"></Button>

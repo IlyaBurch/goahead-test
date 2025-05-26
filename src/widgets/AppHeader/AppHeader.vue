@@ -4,6 +4,7 @@ import { SearchBar } from '@/features/SearchBar'
 import YoutubeLogo from '@/shared/ui/icons/YoutubeLogo/YoutubeLogo.vue'
 import { MenuButtonPopup } from '@/shared/ui/MenuButtonPopup'
 import type { MenuItem } from 'primevue/menuitem'
+import router from '@/router'
 
 import { ref } from 'vue'
 
@@ -25,10 +26,10 @@ const items = ref<MenuItem[]>([
   <header
     class="sticky top-0 z-50 flex items-center justify-between gap-3 border-b-2 border-black bg-white p-3"
   >
-    <div class="flex items-center-safe">
+    <button class="point flex cursor-pointer items-center-safe" @click="router.push('/')">
       <YoutubeLogo height="2rem" width="3rem" />
       <h1 class="md: hidden text-2xl font-bold antialiased sm:block">Поиск видео на youtube</h1>
-    </div>
+    </button>
     <SearchBar class="max-w-5xl" />
     <FilterSelect />
     <MenuButtonPopup :items />

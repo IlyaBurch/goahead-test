@@ -16,7 +16,7 @@ export const useFavoriteStore = defineStore('favorites', () => {
   }
 
   function remove(video: Video) {
-    items.value = items.value.filter(item => item.id !== video.id)
+    items.value = items.value.filter(item => item.id.videoId !== video.id.videoId)
     saveToLocalStorage()
   }
 

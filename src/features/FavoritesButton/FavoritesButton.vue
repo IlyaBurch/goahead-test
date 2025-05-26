@@ -10,7 +10,9 @@ const props = defineProps<{
 
 const favoriteStore = useFavoriteStore()
 
-const isFavorite = computed(() => favoriteStore.items.some((item) => item.id === props.video.id))
+const isFavorite = computed(() =>
+  favoriteStore.items.find((item) => item.id.videoId === props.video.id.videoId),
+)
 
 function toggleFavorite() {
   if (isFavorite.value) {
