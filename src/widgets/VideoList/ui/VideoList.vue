@@ -1,25 +1,10 @@
 <script lang="ts" setup>
 import { SkeletonVideoCard, VideoCard } from '@/entities/VideoCard'
-import { ref, computed, onMounted } from 'vue'
+import type { Video } from '@/shared/types/videos'
 
-const isActive = ref(false)
+const { items, loading } = defineProps<{ items: Video[]; loading: boolean }>()
 
-const toggleState = () => {
-  isActive.value = true
-  setTimeout(() => {
-    isActive.value = false
-  }, 1000)
-}
-
-// Запускаем при монтировании
-onMounted(() => {
-  toggleState()
-})
-
-// Вычисляемое свойство
-const computedState = computed(() => isActive.value)
-
-const items = [
+const skeletonItems = [
   { id: 1 },
   { id: 2 },
   { id: 3 },
@@ -29,19 +14,26 @@ const items = [
   { id: 7 },
   { id: 8 },
   { id: 9 },
+  { id: 10 },
+  { id: 11 },
+  { id: 12 },
 ]
 </script>
 
 <template>
   <section
-    v-if="!computedState"
+    v-if="!loading && items"
     class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
   >
-    <VideoCard class="w-fullsm:w-md" v-for="item in items" :key="item.id" />
+    <VideoCard class="w-fullsm:w-md" v-for="video in items" :key="video.id.videoId" :video />
   </section>
-  <section v-else class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-    <SkeletonVideoCard class="w-fullsm:w-md" v-for="item in items" :key="item.id" />
+  <section
+    v-if="loading && items"
+    class="grid grid-cols-1 gap-4 overflow-hidden sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
+  >
+    <SkeletonVideoCard class="w-fullsm:w-md" v-for="item in skeletonItems" :key="item.id" />
   </section>
+  <p v-if="!items">Ничего не найдено</p>
 </template>
 
 <style></style>

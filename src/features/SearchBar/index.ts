@@ -1,1 +1,1 @@
-export { default as SearchBar } from './ui/SearchBar.vue'
+export { default as SearchBar } from './ui/SearchBar/SearchBar.vue'
